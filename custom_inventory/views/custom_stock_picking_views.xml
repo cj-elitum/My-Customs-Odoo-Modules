@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="custom_view_picking_form" model="ir.ui.view">
+        <field name="name">custom.stock.picking.form</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="after">
+                <field name="origin_link" widget="html"/>
+                <field name="origin_available" invisible="1"/>
+                <button name="open_sale_order" type="object" attrs="{'invisible':[('origin_available','=',False)]}"
+                        class="oe_highlight">
+                    <i class="fa fa-search"/>
+                    <span style="margin-left: 10px">Abrir Origen</span>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='origin']" position="attributes">
+                <attribute name="invisible" widget="html">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

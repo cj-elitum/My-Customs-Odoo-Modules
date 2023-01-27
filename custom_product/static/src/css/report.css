@@ -1,0 +1,7 @@
+.no-border-bottom {
+    border-bottom: none;
+}
+
+.text-green {
+    color: #00a65a !important;
+}

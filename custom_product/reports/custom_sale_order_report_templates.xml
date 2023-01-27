@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_sale_order_report">
+        <t t-foreach="docs" t-as="sale_order">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Mi presupuesto personalizado</h2>
+                        <table class="table table-sm table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ITEM</th>
+                                    <th>MARCA</th>
+                                    <th>DESCRIPCION</th>
+                                    <th>UNIDAD</th>
+                                    <th>QTY</th>
+                                    <th>TIEMPO ENTREGA</th>
+                                    <th>PRECIO</th>
+                                    <th>T.PRECIO</th>
+                                    <th>DESC</th>
+                                    <th>OBSERVACION</th>
+                                    <th>FICHA TECNICA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="sale_order.order_line" t-as="line">
+                                    <td>
+                                        <span>1</span>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_template_id.brand_id"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_template_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_uom.name"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.product_uom_qty"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.customer_lead"/>
+                                        <span>días</span>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.price_unit"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.price_subtotal"/>
+                                    </td>
+                                    <td>
+                                        <span t-field="line.discount"/>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <a href="#">Clic</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <span>Observaciones:</span>
+                                    </td>
+                                    <td colspan="2">
+                                        <p>Subtotal</p>
+                                        <p>(-)Descuento</p>
+                                        <p>IVA 12%</p>
+                                        <p style="color:green;">Total</p>
+                                    </td>
+                                    <td>
+                                        <p t-field="sale_order.amount_untaxed"/>
+                                        <p>
+                                            <t t-set="discount" t-value="0"/>
+                                            <t t-foreach="sale_order.order_line" t-as="line">
+                                                <t t-set="discount" t-value="discount + line.discount"/>
+                                            </t>
+                                            <t t-esc="discount"/>
+                                        </p>
+                                        <p t-field="sale_order.amount_tax"/>
+                                        <p t-field="sale_order.amount_total"/>
+                                    </td>
+                                    <td colspan="2">
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="mt-3">
+                            <!--                            <p>Validez 7 DÍAS, posterior a esta fecha aplica fórmula de reajuste</p>-->
+                            <!--                            <p>Entrega indicada en la oferta</p>-->
+                            <!--                            <p>Material sujeto a venta previa</p>-->
+                            <!--                            <p>Pago 50% CON LA ORDEN DE COMPRA Y 50% PREVIO ENTREGA a partir de la entrega de materiales-->
+                            <!--                                y-->
+                            <!--                                factura-->
+                            <!--                            </p>-->
+                            <!--                            <p>Lugar de entrega, BODEGAS CLIENTES</p>-->
+                            <!--                            <p>Tolerancia +/- 10% en el metraje del cable</p>-->
+                            <!--                            <p>Precios válidos por adjudicación total</p>-->
+                            <!--                            <p>Aplica fórmula de reajuste de cobre</p>-->
+                            <!--                            <p>Pf = Pi + ((Cont. Cu / 1000)*(LME2 - LM1) / 0,4536))</p>-->
+                            <!--                            <p>Donde:</p>-->
+                            <!--                            <p>Pf = Precio final (USD/m)</p>-->
+                            <!--                            <p>Pi = Precio cotizado (USD/m)</p>-->
+                            <!--                            <p>Cont. Cu = Contenido de Cu (Kg/km)</p>-->
+                            <!--                            <p>LME2 = Valor promedio del Cobre (LME) correspondiente al promedio de los 20 días-->
+                            <!--                                anteriores a la fecha de despacho (USD/lb)-->
+                            <!--                            </p>-->
+                            <!--                            <p>LME1 = (US$/lb) (cotizado): Valor día</p>-->
+                            <!--                            <p>Gracias por preferirnos</p>-->
+                            <span>
+                                <strong>
+                                    Validez 7 DÍAS, posterior a esta fecha aplica fórmula de reajuste<br />
+                                    Entrega indicada en la oferta<br />
+                                    Material sujeto a venta previa<br />
+                                    Pago 50% CON LA ORDEN DE COMPRA Y 50% PREVIO ENTREGA a partir de la entrega de
+                                    materiales y factura <br />
+                                    Lugar de entrega, BODEGAS CLIENTES <br />
+                                    Tolerancia +/- 10% en el metraje del cable <br />
+                                    Precios válidos por adjudicación total <br />
+                                    Aplica fórmula de reajuste de cobr /e <br />
+                                    Pf = Pi + ((Cont. Cu / 1000)*(LME2 - LM1) / 0,4536)) <br />
+                                    Donde: <br />
+                                    Pf = Precio final (USD/m) <br />
+                                    Pi = Precio cotizado (USD/m) <br />
+                                    Cont. Cu = Contenido de Cu (Kg/km)<br />
+                                    LME2 = Valor promedio del Cobr /e (LME) correspondiente al promedio de los 20 días
+                                    anteriores<br />
+                                    a la fecha de despacho (USD/lb)<br />
+                                    LME1 = (US$/lb) (cotizado): Valor día<br />
+                                </strong>
+                            </span>
+                            <p class="mt-3">
+                                <strong>Gracias por preferirnos</strong>
+                            </p>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

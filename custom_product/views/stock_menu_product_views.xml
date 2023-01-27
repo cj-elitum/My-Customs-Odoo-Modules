@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_product_brands" model="ir.actions.act_window">
+        <field name="name">Product Brands</field>
+        <field name="res_model">product.brand</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+            name="Product Brands" id="menu_product_brands"
+            parent="stock.menu_product_in_config_stock"
+            sequence="4"
+            action="action_product_brands"
+    />
+
+<!--    Create the brand tree-->
+    <record id="view_product_brand_tree" model="ir.ui.view">
+        <field name="name">product.brand.tree</field>
+        <field name="model">product.brand</field>
+        <field name="arch" type="xml">
+            <tree string="Brands" >
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--    Create the brand form-->
+    <record id="view_product_brand_form" model="ir.ui.view">
+        <field name="name">product.brand.form</field>
+        <field name="model">product.brand</field>
+        <field name="arch" type="xml">
+            <form string="Brands" >
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

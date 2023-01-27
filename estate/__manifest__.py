@@ -1,0 +1,26 @@
+{
+    'name': 'Real Estate',
+    'version': '1.0',
+    'category': 'Real Estate/Brokerage',
+    'summary': 'Track properties and close deals',
+    'description': "Module for selling real state",
+    'website': 'https://www.odoo.com/page/estate',
+    'depends': ['base'],
+    'data': [
+        'security/ir.model.access.csv',
+        'security/estate_security.xml',
+        'views/estate_property_views.xml',
+        'views/estate_property_type_views.xml',
+        'views/estate_property_tag_views.xml',
+        'views/estate_property_offer_views.xml',
+        'views/estate_menus.xml',
+        'views/inherited_users_views.xml',
+        'reports/estate_reports_templates.xml',
+        'reports/estate_property_reports.xml',
+
+    ],
+    'demo': [],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

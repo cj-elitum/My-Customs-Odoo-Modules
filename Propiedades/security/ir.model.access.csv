@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_propiedades_propiedad,access_propiedades_propiedad,model_propiedades_propiedad,base.group_user,1,1,1,1
+access_propiedades_propiedad_type,access_propiedades_propiedad_type,model_propiedades_propiedad_type,base.group_user,1,1,1,1

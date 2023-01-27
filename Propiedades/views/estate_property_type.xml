@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!--ir.action.act_window is fixed value-->
+    <record id="propiedad_type_action" model="ir.actions.act_window">
+        <field name="name">Properties Types</field>
+        <field name="type">ir.actions.act_window</field>
+        <!--The model which the action applies-->
+        <field name="res_model">propiedades.propiedad.type</field>
+        <!-- Are the views that will be available(list(tree),form)-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new real estate type
+            </p>
+        </field>
+    </record>
+
+</odoo>

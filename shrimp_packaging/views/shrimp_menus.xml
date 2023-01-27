@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    The menu is defined in the file estate_menus.xml-->
+    <!--    The app has a menu root and a submenu.-->
+    <menuitem id="shrimp_packaging_menu_root"
+              name="Shrimp Packaging"/>
+
+      <menuitem id="shrimp_packaging_management_menu"
+              name="Manage Packages"
+              parent="shrimp_packaging_menu_root"/>
+
+        <menuitem id="shrimp_packaging_package_menu"
+              name="Packages"
+              parent="shrimp_packaging_management_menu"
+              action="shrimp_packaging_package_action"/>
+
+</odoo>

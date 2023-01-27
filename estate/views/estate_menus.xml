@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    The menu is defined in the file estate_menus.xml-->
+    <!--    The app has a menu root and a submenu.-->
+    <menuitem id="estate_property_menu_root"
+              name="Estate Properties"/>
+
+    <!-- Advertisement Menu-->
+
+    <menuitem id="estate_property_advertisement_menu"
+              name="Advertisements"
+              parent="estate_property_menu_root"/>
+
+    <menuitem id="estate_property_advertisement_menu_properties"
+              name="Properties"
+              parent="estate_property_advertisement_menu"
+              action="estate_property_action"/>
+
+    <!--Settings-->
+    <menuitem id="estate_property_settings_menu"
+              name="Settings"
+              parent="estate_property_menu_root"/>
+
+    <menuitem id="estate_property_settings_menu_types"
+              name="Property Types"
+              parent="estate_property_settings_menu"
+              action="estate_property_type_action"/>
+
+    <menuitem id="estate_property_settings_menu_tags"
+              name="Property Tags"
+              parent="estate_property_settings_menu"
+              action="estate_property_tag_action"/>
+
+</odoo>

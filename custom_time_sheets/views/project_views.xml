@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_task_form2_custom" model="ir.ui.view">
+        <field name="name">view.task.form2.custom</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@id='timesheets_tab']//field[@name='timesheet_ids']//tree//field[@name='name']"
+                   position="after">
+                <field name="type_hours" editable="bottom"/>
+            </xpath>
+            <xpath expr="//page[@id='timesheets_tab']//field[@name='timesheet_ids']//form//field[@name='name']"
+                   position="after">
+                <field name="type_hours"/>
+            </xpath>
+            <xpath expr="//page[@id='timesheets_tab']//group[@name='project_hours']//span"
+                   position="before">
+                <span>
+                    <label class="font-weight-bold" for="warranty_hours" string="Horas de garantia"/>
+                </span>
+                <field name="warranty_hours" widget="timesheet_uom" nolabel="1"/>
+                <span>
+                    <label class="font-weight-bold" for="normal_hours" string="Horas normales"/>
+                </span>
+                <field name="normal_hours" widget="timesheet_uom" nolabel="1" />
+            </xpath>
+        </field>
+
+    </record>
+
+</odoo>

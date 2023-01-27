@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<odoo>
+    <!--ir.action.act_window is fixed value-->
+    <record id="propiedad_action" model="ir.actions.act_window">
+        <field name="name">Properties</field>
+        <field name="type">ir.actions.act_window</field>
+        <!--The model which the action applies-->
+        <field name="res_model">propiedades.propiedad</field>
+        <!-- Are the views that will be available(list(tree),form)-->
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new real estate
+            </p>
+        </field>
+    </record>
+
+    <record id="properties_view_search" model="ir.ui.view">
+        <field name="name">Property Search View</field>
+        <field name="model">propiedades.propiedad</field>
+        <field name="arch" type="xml">
+            <search string="Search Properties">
+                <field name="name"/>
+                <field name="postal_code"/>
+                <field name="expected_price"/>
+                <field name="bedrooms"/>
+                <field name="living_area"/>
+                <field name="facades"/>
+                <!--Filters-->
+                <!--Un domain encapsula una condicion en los registros: es una lista de criterios utilizados-->
+                <!--para seleccionar un subset de los registros de un modelo-->
+                <filter name="state" string="Available" domain="['|',('state', '=', 'new'), ('state', '=', 'received')]" />
+                <separator/>
+                <filter name="bedrooms" string="More than 4 Bedrooms" domain="[('bedrooms', '>' , '4')]" />
+                <filter name="bedrooms" string="4 Bedrooms or less" domain="[('bedrooms', '&lt;=' , '4')]" />
+                <filter name="groupby_postal_code" string="Postalcode" context="{'group_by' : 'postal_code'}"  />
+                <filter name="groupby_date_availability" string="Available Date" context="{'group_by' : 'date_availability:month'}"  />
+            </search>
+        </field>
+    </record>
+
+    <record id="estate_property_view_tree" model="ir.ui.view">
+        <field name="name">Property View</field>
+        <field name="model">propiedades.propiedad</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" string="Title"/>
+                <field name="postal_code" string="Postcode"/>
+                <field name="bedrooms" string="Bedrooms"/>
+                <field name="living_area" string="Living Area (sqm)"/>
+                <field name="expected_price" string="Expected Price"/>
+                <field name="selling_price" string="Expected Price"/>
+                <field name="date_availability" string="Available From"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="property_view_form" model="ir.ui.view">
+        <field name="name">Property View Form</field>
+        <field name="model">propiedades.propiedad</field>
+        <field name="arch" type="xml">
+            <form string="My new house">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" class="mb16"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="postal_code"/>
+                            <field name="date_availability"/>
+                        </group>
+                        <group>
+                            <field name="expected_price"/>
+                            <field name="selling_price"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <group>
+                                <field name="description"/>
+                                <field name="bedrooms"/>
+                                <field name="living_area"/>
+                                <field name="facades"/>
+                                <field name="garage"/>
+                                <field name="garden"/>
+                                <field name="garden_area"/>
+                                <field name="garden_orientation"/>
+                                <field name="state"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
+
